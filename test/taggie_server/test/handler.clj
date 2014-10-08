@@ -1,6 +1,6 @@
-(ns groupie-server.test.handler
+(ns taggie-server.test.handler
   (:require [clojure.test :refer :all]
-            [groupie-server.handler :refer :all]
+            [taggie-server.handler :refer :all]
             [ring.mock.request :as mock]))
 
 (deftest test-app

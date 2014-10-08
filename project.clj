@@ -1,6 +1,6 @@
-(defproject groupie-server "0.1.0-SNAPSHOT"
-  :description "Groupie server"
-  :url "http://github.com/jamppa/groupie-server"
+(defproject taggie-server "0.1.0-SNAPSHOT"
+  :description "Taggie server"
+  :url "http://github.com/jamppa/taggie-server"
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [compojure "1.1.9"]
@@ -8,8 +8,8 @@
                  [com.novemberain/monger "2.0.0"]
                  [http-kit "2.1.6"]]
   :plugins [[lein-ring "0.8.12"]]
-  :ring {:handler groupie-server.handler/app}
-  :main groupie-server.start
+  :ring {:handler taggie-server.handler/app}
+  :main taggie-server.start
   :profiles
   {:dev
     {:dependencies

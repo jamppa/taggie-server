@@ -1,9 +1,9 @@
-(ns groupie-server.start
+(ns taggie-server.start
 	(:require [org.httpkit.server :as httpkit])
-	(:use groupie-server.handler))
+	(:use taggie-server.handler))
 
 (defonce server (atom nil))
 
 (defn -main [& args]
-	(println "Starting groupie server...")
+	(println "Starting taggie server...")
 	(reset! server (httpkit/run-server #'app {:port 3000})))

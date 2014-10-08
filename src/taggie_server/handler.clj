@@ -1,4 +1,4 @@
-(ns groupie-server.handler
+(ns taggie-server.handler
   (:require [compojure.core :refer :all]
             [compojure.handler :as handler]
             [compojure.route :as route]))
