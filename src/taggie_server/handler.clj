@@ -1,12 +1,18 @@
 (ns taggie-server.handler
-  (:require [compojure.core :refer :all]
-            [compojure.handler :as handler]
-            [compojure.route :as route]))
+	(:use taggie-server.routes.subject-routes)
+	(:require 
+		[compojure.core :refer :all]
+		[compojure.handler :as handler]
+		[compojure.route :as route]
+		[ring.middleware.format-params :refer [wrap-restful-params]]
+		[ring.middleware.format-response :refer [wrap-restful-response]]))
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
-  (route/resources "/")
-  (route/not-found "Not Found"))
+	(context "/api" [] subject-routes)
+	(route/not-found "Requested URL not found"))
 
 (def app
-  (handler/site app-routes))
+	(->
+		(handler/site app-routes)
+		(wrap-restful-params)
+		(wrap-restful-response)))

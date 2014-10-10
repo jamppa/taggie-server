@@ -5,6 +5,7 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [compojure "1.1.9"]
                  [liberator "0.12.0"]
+                 [ring-middleware-format "0.4.0"]
                  [com.novemberain/monger "2.0.0"]
                  [http-kit "2.1.6"]]
   :plugins [[lein-ring "0.8.12"]]
