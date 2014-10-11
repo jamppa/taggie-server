@@ -4,11 +4,13 @@
 		taggie-server.db.conn)
 	(:require [monger.core :as monger]))
 
-(def db {})
+(def mock-db {})
+
+(background (before :facts (set-test-db!)))
 
 (fact "should get database"
-	(get-db) => db
+	(get-db) => mock-db
 	(provided 
 		(monger/connect) => anything :times 1
-		(monger/get-db anything *db*) => db :times 1))
+		(monger/get-db anything "taggie-test") => mock-db :times 1))
 

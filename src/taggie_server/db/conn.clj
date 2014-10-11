@@ -2,8 +2,14 @@
 	(:require [monger.core :as monger])
 	(:use taggie-server.config))
 
-(def ^:dynamic *db* (config :db :name))
+(def db (atom ""))
+
+(defn set-db! []
+	(reset! db (config :db :name)))
+
+(defn set-test-db! []
+	(reset! db (config :db :name-test)))
 
 (defn get-db []
 	(let [conn (monger/connect)]
-		(monger/get-db conn *db*)))
+		(monger/get-db conn @db)))

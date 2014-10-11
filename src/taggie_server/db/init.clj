@@ -19,10 +19,10 @@
 (defn- setup-db []
 	(insert-docs "users" [user-teppo]))
 
-(defn reload-db []
+(defn- reload-db []
 	(drop-db)
 	(setup-db))
 
 (defn reload-test-db []
-	(binding [*db* (config :db :name-test)]
-		(reload-db)))
+    (set-test-db!)
+    (reload-db))
