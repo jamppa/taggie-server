@@ -1,4 +1,0 @@
-image: jamppa/taggie_server
-script:
-  - lein deps
-  - lein midje
