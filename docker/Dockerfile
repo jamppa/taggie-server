@@ -31,8 +31,9 @@ EXPOSE 27017
 EXPOSE 28017
 EXPOSE 3000
 
-WORKDIR /home/taggie
 USER taggie
-RUN mkdir dev
+RUN mkdir -p dev
+RUN lein
+WORKDIR /home/taggie/dev
 
 CMD /bin/bash
