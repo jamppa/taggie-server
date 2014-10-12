@@ -10,8 +10,8 @@
 (defn find-by-id [id-as-str]
     (monger/find-map-by-id (db/get-db) user-collection (ObjectId. id-as-str)))
 
-(defn find-by-email-and-pass [email pass]
-    (monger/find-one-as-map (db/get-db) user-collection {:email email :password pass}))
+(defn find-by-email-and-pwd [email pwd]
+    (monger/find-one-as-map (db/get-db) user-collection {:email email :password pwd}))
 
 (defn save [user]
     (monger/insert-and-return (db/get-db) user-collection (db-util/with-oid user)))

@@ -16,9 +16,9 @@
 		(user/find-by-id (.toString (:_id saved))) => saved))
 
 (fact "should find user by email and password"
-	(user/find-by-email-and-pass "teppo@testaaja.fi" "secret") => db/user-teppo)
+	(user/find-by-email-and-pwd "teppo@testaaja.fi" "secret") => db/user-teppo)
 
 (fact "should not find non-existing user by email and password"
-	(user/find-by-email-and-pass "foo@bar.fi" "secret") => nil)
+	(user/find-by-email-and-pwd "foo@bar.fi" "secret") => nil)
 
 )
