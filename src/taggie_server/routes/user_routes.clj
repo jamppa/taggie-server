@@ -6,12 +6,13 @@
 
 (defn- register-user [ctx]
 	(let [new-user (get-in ctx [:request :params])]
-		(user/save new-user)))
+		{:user (user/save new-user)}))
 
 (liberator/defresource register-user-resource
 	:available-media-types ["application/json"]
 	:allowed-methods [:post]
-	:post! register-user)
+	:post! register-user
+	:handle-created (fn [ctx] (get-in ctx [:user])))
 
 (defroutes user-routes
 	(POST "/user" [] register-user-resource))
