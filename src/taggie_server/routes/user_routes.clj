@@ -6,7 +6,7 @@
 
 (defn- register-user [ctx]
 	(let [new-user (get-in ctx [:request :params])]
-		{:user (user/save new-user)}))
+        {:user (user/save new-user)}))
 
 (liberator/defresource register-user-resource
 	:available-media-types ["application/json"]

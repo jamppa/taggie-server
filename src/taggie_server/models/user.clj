@@ -2,6 +2,7 @@
     (:require
         [taggie-server.db.conn :as db]
         [monger.collection :as monger]
+        [monger.json :refer :all]
         [taggie-server.db.util :as db-util])
     (:import [org.bson.types ObjectId]))
 

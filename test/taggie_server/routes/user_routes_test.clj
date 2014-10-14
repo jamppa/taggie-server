@@ -6,13 +6,14 @@
 		taggie-server.routes.user-routes)
 	(:require [taggie-server.models.user :as user]))
 
-(def saved-user {:email "tepi@testeri.fi" :password "secret"})
+(def new-user {:email "tepi@testeri.fi" :password "secret"})
 
-(defn- taggie-request [method uri]
+(defn- taggie-request [method uri & payload]
 	(-> (request method uri)
-		(content-type "application/json")))
+		(content-type "application/json")
+        (merge {:params (first payload)})))
 
 (fact "should save new user on user registration"
-	(user-routes (taggie-request :post "/user")) => (contains {:status 201} {:body (generate-string saved-user)})
+	(user-routes (taggie-request :post "/user" new-user)) => (contains {:status 201} {:body (generate-string new-user)})
 	(provided
-		(user/save anything) => saved-user :times 1))
+		(user/save new-user) => new-user :times 1))
