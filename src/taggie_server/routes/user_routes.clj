@@ -1,18 +1,18 @@
 (ns taggie-server.routes.user-routes
-	(:use compojure.core)
-	(:require
-		[liberator.core :as liberator]
-		[taggie-server.models.user :as user]))
+    (:use compojure.core)
+    (:require
+        [liberator.core :as liberator]
+        [taggie-server.models.user :as user]))
 
 (defn- register-user [ctx]
-	(let [new-user (get-in ctx [:request :params])]
+    (let [new-user (get-in ctx [:request :params])]
         {:user (user/save new-user)}))
 
 (liberator/defresource register-user-resource
-	:available-media-types ["application/json"]
-	:allowed-methods [:post]
-	:post! register-user
-	:handle-created (fn [ctx] (get-in ctx [:user])))
+    :available-media-types ["application/json"]
+    :allowed-methods [:post]
+    :post! register-user
+    :handle-created (fn [ctx] (get-in ctx [:user])))
 
 (defroutes user-routes
-	(POST "/user" [] register-user-resource))
+    (POST "/user" [] register-user-resource))
