@@ -21,4 +21,7 @@
 (fact "should not find non-existing user by email and password"
 	(user/find-by-email-and-pwd "foo@bar.fi" "secret") => nil)
 
+(fact "should validate valid user truthy"
+    (user/is-valid new-user) => truthy)
+
 )
