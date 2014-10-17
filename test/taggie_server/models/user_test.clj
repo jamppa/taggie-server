@@ -24,4 +24,7 @@
 (fact "should validate valid user truthy"
     (user/is-valid new-user) => truthy)
 
+(fact "should validate invalid user falsey"
+    (user/is-valid (dissoc new-user :email)) => falsey)
+
 )
