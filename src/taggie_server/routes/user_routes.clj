@@ -8,10 +8,15 @@
     (let [new-user (get-in ctx [:request :params])]
         {:user (user/save new-user)}))
 
+(defn- malformed-user? [ctx]
+    (let [new-user (get-in ctx [:request :params])]
+        (not (user/is-valid new-user))))
+
 (liberator/defresource register-user-resource
     :available-media-types ["application/json"]
     :allowed-methods [:post]
     :post! register-user
+    :malformed? malformed-user?
     :handle-created (fn [ctx] (get-in ctx [:user])))
 
 (defroutes user-routes
