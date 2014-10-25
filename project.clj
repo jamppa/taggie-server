@@ -8,7 +8,9 @@
                  [ring-middleware-format "0.4.0"]
                  [com.novemberain/monger "2.0.0"]
                  [com.novemberain/validateur "2.3.1"]
-                 [http-kit "2.1.6"]]
+                 [http-kit "2.1.6"]
+                 [clj-jwt "0.0.11"]
+                 [clj-time "0.8.0"]]
   :plugins [[lein-ring "0.8.12"]]
   :ring {:handler taggie-server.handler/app}
   :main taggie-server.start
