@@ -11,5 +11,5 @@
 	(reset! db (config :db :name-test)))
 
 (defn get-db []
-	(let [conn (monger/connect)]
+	(let [conn (monger/connect {:host "db"})]
 		(monger/get-db conn @db)))
