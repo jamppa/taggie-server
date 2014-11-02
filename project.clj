@@ -10,7 +10,8 @@
                  [com.novemberain/validateur "2.3.1"]
                  [http-kit "2.1.6"]
                  [clj-jwt "0.0.11"]
-                 [clj-time "0.8.0"]]
+                 [clj-time "0.8.0"]
+                 [environ "1.0.0"]]
   :plugins [[lein-ring "0.8.12"]]
   :ring {:handler taggie-server.handler/app}
   :main taggie-server.start

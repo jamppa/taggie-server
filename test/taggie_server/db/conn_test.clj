@@ -10,7 +10,8 @@
 
 (fact "should get database"
 	(get-db) => mock-db
-	(provided 
+	(provided
+    (db-host) => {:host "db"} :times 1
 		(monger/connect {:host "db"}) => anything :times 1
 		(monger/get-db anything "taggie-test") => mock-db :times 1))
 
